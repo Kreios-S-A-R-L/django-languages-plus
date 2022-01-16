@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 import logging
 
@@ -117,7 +117,7 @@ class Language(models.Model):
         return self.culturecode or self.iso_639_1
 
     def __str__(self):
-        return u'%s' % (self.name_en,)
+        return '%s' % (self.name_en,)
 
 
 class CultureCodeMixin(object):
