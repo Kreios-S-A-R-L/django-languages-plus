@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 import logging
 
 from countries_plus.models import Country
 from django.db import models
 from django.db.models import Q
 from django.db.models.query import QuerySet
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
@@ -78,7 +75,6 @@ class LanguageManager(models.Manager):
         return langs
 
 
-@python_2_unicode_compatible
 class Language(models.Model):
     class Meta:
         verbose_name = _('Language')
@@ -117,7 +113,7 @@ class Language(models.Model):
         return self.culturecode or self.iso_639_1
 
     def __str__(self):
-        return u'%s' % (self.name_en,)
+        return '%s' % (self.name_en,)
 
 
 class CultureCodeMixin(object):
@@ -147,7 +143,6 @@ class CultureCodeManager(models.Manager, CultureCodeMixin):
         return CultureCodeQuerySet(self.model, using=self._db)
 
 
-@python_2_unicode_compatible
 class CultureCode(models.Model):
     class Meta:
         verbose_name = _('CultureCode')

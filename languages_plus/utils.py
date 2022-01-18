@@ -12,7 +12,7 @@ def associate_countries_and_languages():
     languages = {x.iso_639_1: x for x in Language.objects.all()}
     countries = {x.iso: x for x in Country.objects.exclude(languages=None)}
 
-    for country in countries.values():
+    for country in list(countries.values()):
         codes = country.languages.strip(',').split(',')
         for code in codes:
             if '-' in code:
